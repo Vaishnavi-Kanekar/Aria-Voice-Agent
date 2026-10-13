@@ -1,0 +1,88 @@
+:root {
+  --bg: #f6f5f1;
+  --card: #ffffff;
+  --ink: #1d2a27;
+  --muted: #6b7a76;
+  --line: #e4e2da;
+  --accent: #2f7d6b;
+  --accent-ink: #ffffff;
+  --danger: #b4443c;
+  --listening: #2f7d6b;
+  --thinking: #c58a1b;
+  --speaking: #3f6fd1;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.45;
+}
+
+.page { max-width: 1080px; margin: 0 auto; padding: 24px 16px 48px; }
+.header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+.header h1 { margin: 0; font-size: 1.5rem; }
+.subtitle { color: var(--muted); }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+.main { display: flex; flex-direction: column; gap: 16px; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.card h2 { margin: 0 0 10px; font-size: 1.05rem; }
+.card h3 { margin: 18px 0 6px; font-size: 0.95rem; }
+
+.call-card { display: flex; flex-direction: column; gap: 14px; }
+.controls { display: flex; gap: 10px; }
+.btn {
+  border: 1px solid var(--line); background: #fff; color: var(--ink);
+  padding: 10px 20px; border-radius: 8px; font-size: 1rem; cursor: pointer;
+}
+.btn.small { padding: 6px 12px; font-size: 0.85rem; margin-top: 8px; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.state { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 10px; background: #f1f0eb; }
+.state .dot { width: 18px; height: 18px; border-radius: 50%; background: #b9b7ae; flex: none; }
+.state-label { font-weight: 600; font-size: 1.1rem; }
+.state-hint { color: var(--muted); font-size: 0.85rem; }
+.state-listening .dot { background: var(--listening); animation: pulse 1.6s ease-in-out infinite; }
+.state-thinking .dot { background: var(--thinking); animation: blink 0.8s steps(2) infinite; }
+.state-speaking .dot { background: var(--speaking); animation: pulse 0.7s ease-in-out infinite; }
+.state-connecting .dot, .state-ending .dot { background: var(--thinking); animation: blink 1s steps(2) infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.6; } }
+@keyframes blink { 50% { opacity: 0.25; } }
+
+.hint, .muted { color: var(--muted); }
+.hint { margin: 0; font-size: 0.85rem; }
+.small { font-size: 0.8rem; }
+.error { background: #fbeceb; color: #8d2b24; border: 1px solid #efc3bf; padding: 10px 12px; border-radius: 8px; font-size: 0.9rem; }
+
+.chat { display: flex; flex-direction: column; gap: 10px; max-height: 420px; overflow-y: auto; }
+.bubble { max-width: 85%; padding: 8px 12px; border-radius: 12px; }
+.bubble.user { align-self: flex-end; background: #e5f1ee; }
+.bubble.agent { align-self: flex-start; background: #eef1fb; }
+.bubble.partial { opacity: 0.6; font-style: italic; }
+.bubble .who { font-size: 0.72rem; font-weight: 600; color: var(--muted); margin-bottom: 2px; }
+.latency { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+.tag { color: var(--muted); font-size: 0.8rem; }
+
+.order { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+.order-top { display: flex; justify-content: space-between; align-items: center; }
+.pill { font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: #eee; }
+.pill-out-for-delivery { background: #fff0d6; }
+.pill-delivered { background: #dff3e4; }
+.pill-processing { background: #e1ebfb; }
+
+.tryList { margin: 0; padding-left: 18px; font-size: 0.85rem; color: var(--muted); }
+.tryList li { margin: 3px 0; }
+
+.json {
+  background: #1f2926; color: #d8efe8; padding: 12px; border-radius: 8px;
+  overflow-x: auto; font-size: 0.82rem; margin: 8px 0 0; white-space: pre-wrap; word-break: break-word;
+}
+.tools { margin-top: 14px; }
+.tools summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
