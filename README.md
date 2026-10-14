@@ -2,7 +2,7 @@
 
 A browser-based voice agent. Click **Start Call**, talk to Aria, hear her reply, and get a transcript plus a structured JSON outcome when you hang up.
 
-- **Live app:** https://aria-voice-agent-1ezk.onrender.com`
+- **Live app:** https://aria-voice-agent-1ezk.onrender.com
 - **Stack:** React (Vite) + FastAPI + WebSockets. Deepgram Nova-3 (speech-to-text) -> Groq `openai/gpt-oss-120b` (LLM + tools) -> ElevenLabs Flash (text-to-speech).
 
 ## What it does
